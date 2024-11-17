@@ -2,7 +2,6 @@ import express from "express";
 import path from "path";
 import { rootDir } from "./utils/pathUtil.js";
 import home from "./routes/home.js";
-import addHome from "./routes/addHome.js";
 import registerHome from "./routes/registerHome.js";
 import contactUs from "./routes/contactUs.js";
 import errorHandler from "./routes/errorHandler.js";
@@ -16,7 +15,6 @@ server.use(express.static(path.join(rootDir, "public")));
 server.use(express.urlencoded({ extended: true }));
 
 server.use(home);
-server.use(addHome);
 server.use(registerHome);
 server.use(contactUs);
 server.use(errorHandler);
