@@ -1,16 +1,10 @@
 import express from "express";
-import { registeredHomes } from "../utils/data.js";
+import homesController from "../controllers/homesController.js";
 
 const registerHome = express.Router();
 
-registerHome.get("/registerHome", (req, res, next) => {
-  res.render("registerHome", { pageTitle: "Register Home", currentPage: "registerHome" });
-});
+registerHome.get("/registerHome", homesController.getRegisterHome);
 
-registerHome.post("/registerHome", (req, res, next) => {
-  console.log("Home registered successful for : ", req.body);
-  registeredHomes.push(req.body);
-  res.render("registerHomeSuccess", { pageTitle: "Register Home Success", currentPage: "registerHomeSuccess" });
-});
+registerHome.post("/registerHome", homesController.registerHomeSuccess);
 
 export default registerHome;

@@ -1,15 +1,8 @@
 import express from "express";
-import { registeredHomes } from "../utils/data.js";
+import homesController from "../controllers/homesController.js";
 
 const home = express.Router();
 
-home.get("/", (req, res, next) => {
-  console.log("registeredHomes: ", registeredHomes)
-  res.render("home", {
-    registeredHomes: registeredHomes,
-    pageTitle: "AirBnB",
-    currentPage : "home"
-  });
-});
+home.get("/", homesController.getHomes);
 
 export default home;

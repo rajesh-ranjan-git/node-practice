@@ -1,9 +1,8 @@
 import express from "express";
+import errorController from "../controllers/errorController.js";
 
 const errorHandler = express.Router();
 
-errorHandler.use("/", (req, res, next) => {
-  res.status(404).render("error", { pageTitle: "404 - Page Not Found", currentPage: "error" });
-});
+errorHandler.use("/", errorController);
 
 export default errorHandler;
