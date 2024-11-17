@@ -1,31 +1,44 @@
 <%- include("partials/head") %>
-  <body>
-    <%- include("partials/navBar") %>
-    <main class="flex items-center justify-center mx-10 mt-5">
-      <div class="w-full p-10 mt-5 rounded-md shadow-2xl">
-        <h1 class="text-xl font-semibold text-center text-red-500">
-          Register your Home on AirBnB
-        </h1>
-        <form
-          class="flex flex-col items-center justify-center m-3"
-          action="/registerHome"
-          method="POST"
-        >
-          <input
-            class="w-full p-2 my-1 border rounded-md"
-            type="text"
-            id="houseName"
-            name="houseName"
-            placeholder="Enter your House Name..."
-          />
-          <button
-            class="w-full p-2 my-1 font-semibold text-white bg-red-500 border rounded-md"
-            type="submit"
-          >
-            Register
-          </button>
-        </form>
-      </div>
-    </main>
-  </body>
+
+<body>
+  <%- include("partials/navBar") %>
+  <main class="flex items-center justify-center mx-10 mt-5">
+    <div class="w-full p-10 mt-5 rounded-md shadow-2xl">
+      <h1 class="text-2xl font-semibold text-center text-red-500">
+        Register your Home on AirBnB
+      </h1>
+      <form class="flex flex-col items-center justify-center m-3" action="/registerHome" method="POST">
+        <div class="flex items-center justify-between w-full">
+          <label class="font-semibold " for="houseName">House Name : </label>
+          <input class="w-[70%] p-2 my-1 border rounded-md " type="text" id="houseName" name="houseName"
+            placeholder="Enter your House Name..." />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <label class="font-semibold " for="housePricePerNight">Price per night : </label>
+          <input class="w-[70%] p-2 my-1 border rounded-md " type="text" id="housePricePerNight" name="housePricePerNight"
+            placeholder="Enter your Price per night..." />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <label class="font-semibold " for="houseLocation">Location : </label>
+          <input class="w-[70%] p-2 my-1 border rounded-md " type="text" id="houseLocation" name="houseLocation"
+            placeholder="Enter your Location..." />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <label class="font-semibold " for="houseRating">Rating : </label>
+          <input class="w-[70%] p-2 my-1 border rounded-md " type="text" id="houseRating" name="houseRating"
+            placeholder="Enter your Rating..." />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <label class="font-semibold " for="housePhotoURL">Photo URL : </label>
+          <input class="w-[70%] p-2 my-1 border rounded-md " type="text" id="housePhotoURL" name="housePhotoURL"
+            placeholder="Provide Photo URL..." value="https://png.pngtree.com/thumb_back/fh260/background/20230618/pngtree-modern-house-visualized-in-stunning-3d-render-image_3630772.jpg" disabled />
+        </div>
+        <button class="w-full p-2 my-1 font-semibold text-white bg-red-500 border rounded-md" type="submit">
+          Register
+        </button>
+      </form>
+    </div>
+  </main>
+</body>
+
 </html>

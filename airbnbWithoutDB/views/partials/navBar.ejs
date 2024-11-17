@@ -2,10 +2,10 @@
   class="flex items-center justify-start h-12 px-10 text-white bg-red-500"
 >
   <ul class="flex items-center justify-start">
-    <li class="px-5 py-2 mx-2 rounded-md hover:bg-red-400">
+    <li class="<%= currentPage === 'home' ? 'bg-red-400' : 'hover:bg-red-400' %> px-5 py-2 mx-2 rounded-md">
       <a href="/">Home</a>
     </li>
-    <li class="px-5 py-2 mx-2 rounded-md hover:bg-red-400">
+    <li class="<%= currentPage === 'registerHome' ? 'bg-red-400' : 'hover:bg-red-400' %> px-5 py-2 mx-2 rounded-md hover:bg-red-400">
       <a href="/registerHome">Register Home</a>
     </li>
     </li>
