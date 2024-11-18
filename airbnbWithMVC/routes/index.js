@@ -1,8 +1,8 @@
 import express from "express";
 import homesController from "../controllers/homesController.js";
 
-const home = express.Router();
+const index = express.Router();
 
-home.get("/", homesController.getHomes);
+index.get("/", homesController.getHomes);
 
-export default home;
+export default index;

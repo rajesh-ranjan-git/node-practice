@@ -1,8 +1,12 @@
 import express from "express";
 import path from "path";
 import rootDir from "./utils/pathUtil.js";
-import home from "./routes/home.js";
-import registerHome from "./routes/registerHome.js";
+import index from "./routes/index.js";
+import homeList from "./routes/homeListHandler.js";
+import favorites from "./routes/favoritesHandler.js";
+import bookings from "./routes/bookingsHandler.js";
+import hostHomeList from "./routes/hostHomeListHandler.js";
+import registerHome from "./routes/registerHomeHandler.js";
 import errorHandler from "./routes/errorHandler.js";
 
 const PORT = process.env.PORT || 8001;
@@ -16,7 +20,11 @@ server.use(express.static(path.join(rootDir, "public")));
 
 server.use(express.urlencoded({ extended: true }));
 
-server.use(home);
+server.use(index);
+server.use(homeList);
+server.use(favorites);
+server.use(bookings);
+server.use(hostHomeList);
 server.use(registerHome);
 server.use(errorHandler);
 
