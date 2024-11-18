@@ -1,4 +1,6 @@
-import registeredHomes from "../utils/data.js";
+import fs from "fs";
+import path from "path";
+import rootDir from "../utils/pathUtil.js";
 
 class HomeModel {
     constructor(houseName, housePricePerNight, houseLocation, houseRating, housePhotoURL) {
@@ -10,11 +12,21 @@ class HomeModel {
     }
 
     save() {
-        registeredHomes.push(this);
+        HomeModel.fetchAllHomes(registeredHomes => {
+            registeredHomes.push(this);
+            const homeDataPath = path.join(rootDir, "data", "homes.json");
+            fs.writeFile(homeDataPath, JSON.stringify(registeredHomes), error => {
+                console.log("File writing concluded, ", error)
+            });
+        })
     }
 
-    static fetchAllHomes() {
-        return registeredHomes;
+    static fetchAllHomes(callback) {
+        const homeDataPath = path.join(rootDir, "data", "homes.json");
+        fs.readFile(homeDataPath, (err, data) => {
+            console.log("File read successfully : ", err, data);
+            callback(!err ? JSON.parse(data) : []);
+        })
     }
 }
 

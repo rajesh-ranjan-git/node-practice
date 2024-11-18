@@ -1,6 +1,6 @@
 import express from "express";
 import path from "path";
-import { rootDir } from "./utils/pathUtil.js";
+import rootDir from "./utils/pathUtil.js";
 import home from "./routes/home.js";
 import registerHome from "./routes/registerHome.js";
 import errorHandler from "./routes/errorHandler.js";

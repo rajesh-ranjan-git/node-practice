@@ -1,12 +1,12 @@
-import HomeModel from "../models/homeModel.js"
+import HomeModel from "../models/homeModel.js";
 
 const getHomes = (req, res, next) => {
-  const registeredHomes = HomeModel.fetchAllHomes();
-  console.log("registeredHomes: ", registeredHomes)
-  res.render("home", {
-    registeredHomes: registeredHomes,
-    pageTitle: "AirBnB",
-    currentPage : "home"
+  const registeredHomes = HomeModel.fetchAllHomes((registeredHomes) => {
+    res.render("home", {
+      registeredHomes: registeredHomes,
+      pageTitle: "AirBnB",
+      currentPage : "home"
+    });
   });
 }
 
