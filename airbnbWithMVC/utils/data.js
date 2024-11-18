@@ -1,1 +1,3 @@
-export const registeredHomes = [];
+const registeredHomes = [];
+
+export default registeredHomes;
