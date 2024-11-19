@@ -42,7 +42,7 @@ const getBookings = (req, res, next) => {
 
 const getHostHomesList = (req, res, next) => {
   const hostHomesList = HomeModel.fetchAllHomes((hostHomesList) => {
-    res.render("store/hostHomesList", {
+    res.render("host/hostHomesList", {
       hostHomesList: hostHomesList,
       pageTitle: "Homes List",
       currentPage: "hostHomesList",
