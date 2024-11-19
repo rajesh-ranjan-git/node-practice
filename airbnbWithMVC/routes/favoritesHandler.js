@@ -3,6 +3,6 @@ import homesController from "../controllers/homesController.js";
 
 const favorites = express.Router();
 
-favorites.get("/", homesController.getHomes);
+favorites.get("/favorites", homesController.getFavorites);
 
 export default favorites;

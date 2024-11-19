@@ -2,10 +2,10 @@ import express from "express";
 import path from "path";
 import rootDir from "./utils/pathUtil.js";
 import index from "./routes/index.js";
-import homeList from "./routes/homeListHandler.js";
+import homesList from "./routes/homesListHandler.js";
 import favorites from "./routes/favoritesHandler.js";
 import bookings from "./routes/bookingsHandler.js";
-import hostHomeList from "./routes/hostHomeListHandler.js";
+import hostHomesList from "./routes/hostHomesListHandler.js";
 import registerHome from "./routes/registerHomeHandler.js";
 import errorHandler from "./routes/errorHandler.js";
 
@@ -21,10 +21,10 @@ server.use(express.static(path.join(rootDir, "public")));
 server.use(express.urlencoded({ extended: true }));
 
 server.use(index);
-server.use(homeList);
+server.use(homesList);
 server.use(favorites);
 server.use(bookings);
-server.use(hostHomeList);
+server.use(hostHomesList);
 server.use(registerHome);
 server.use(errorHandler);
 

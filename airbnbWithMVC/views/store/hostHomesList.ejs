@@ -1,0 +1,43 @@
+<%- include("../partials/head") %>
+
+<body>
+  <%- include("../partials/navBar") %>
+  <main class="flex items-center justify-center mx-10 mt-5">
+    <div class="w-full p-10 rounded-md shadow-2xl">
+      <h1 class="text-3xl font-semibold text-center text-red-500">Here are your homes.</h1>
+      <ul class="mx-2 my-4">
+        <% hostHomesList.forEach(function(home){ %>
+        <li class="p-3">
+          <div class="flex flex-col items-center justify-center w-full rounded-md shadow-xl">
+            <div class="w-full"><img class="object-fill w-full rounded-t-md"
+                src="https://png.pngtree.com/thumb_back/fh260/background/20230618/pngtree-modern-house-visualized-in-stunning-3d-render-image_3630772.jpg"
+                alt="housePhoto"></div>
+            <div class="flex items-center justify-between w-full p-3">
+              <ul class="flex flex-col items-start justify-start w-full">
+                <li class="w-full text-2xl font-semibold"><%= home.houseName %>
+                </li>
+                <li class="w-full text-xl font-semibold text-neutral-500"><%= home.houseLocation %>
+                </li>
+                <li class="flex items-center justify-between w-full">
+                  <div class="text-2xl font-semibold text-red-500">₹ <%= home.housePricePerNight %><span> / night</span>
+                  </div>
+                  <div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                      fill="currentColor" class="w-5 h-5 mr-1 text-yellow-400">
+                      <path fill-rule="evenodd"
+                        d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                        clip-rule="evenodd" />
+                    </svg> <%= home.houseRating %>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+
+    </div>
+  </main>
+</body>
+
+</html>

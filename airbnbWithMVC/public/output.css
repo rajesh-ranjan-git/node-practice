@@ -558,6 +558,10 @@ video {
   margin: 0.75rem;
 }
 
+.m-4 {
+  margin: 1rem;
+}
+
 .mx-10 {
   margin-left: 2.5rem;
   margin-right: 2.5rem;
@@ -595,20 +599,8 @@ video {
   display: flex;
 }
 
-.h-12 {
-  height: 3rem;
-}
-
 .h-5 {
   height: 1.25rem;
-}
-
-.h-20 {
-  height: 5rem;
-}
-
-.h-24 {
-  height: 6rem;
 }
 
 .min-h-12 {

@@ -3,6 +3,6 @@ import homesController from "../controllers/homesController.js";
 
 const bookings = express.Router();
 
-bookings.get("/", homesController.getHomes);
+bookings.get("/bookings", homesController.getBookings);
 
 export default bookings;
