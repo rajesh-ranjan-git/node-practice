@@ -61,6 +61,7 @@ const registerHomeSuccess = (req, res, next) => {
   console.log("Home registered successful for : ", req.body);
 
   const {
+    houseId,
     houseName,
     housePricePerNight,
     houseLocation,
@@ -68,6 +69,7 @@ const registerHomeSuccess = (req, res, next) => {
     housePhotoURL,
   } = req.body;
   const home = new HomeModel(
+    houseId,
     houseName,
     housePricePerNight,
     houseLocation,
@@ -82,6 +84,14 @@ const registerHomeSuccess = (req, res, next) => {
   });
 };
 
-const homesController = { getHomes, getHomesList, getFavorites, getBookings, getHostHomesList, getRegisterHome, registerHomeSuccess };
+const homesController = {
+  getHomes,
+  getHomesList,
+  getFavorites,
+  getBookings,
+  getHostHomesList,
+  getRegisterHome,
+  registerHomeSuccess,
+};
 
 export default homesController;

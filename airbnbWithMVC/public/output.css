@@ -615,6 +615,10 @@ video {
   height: 1.25rem;
 }
 
+.h-\[240px\] {
+  height: 240px;
+}
+
 .min-h-12 {
   min-height: 3rem;
 }
@@ -629,6 +633,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[360px\] {
+  width: 360px;
 }
 
 .flex-col {
@@ -837,6 +845,20 @@ video {
   background: #ef4444;
 }
 
+.favorite {
+  background-image: url("/images/empty-heart.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.favoriteActive {
+  background-image: url("/images/red-heart.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 .hover\:bg-red-400:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(248 113 113 / var(--tw-bg-opacity, 1));
@@ -845,10 +867,6 @@ video {
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:font-semibold:hover {
-  font-weight: 600;
 }
 
 .hover\:text-blue-800:hover {

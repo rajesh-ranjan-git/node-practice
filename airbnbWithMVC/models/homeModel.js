@@ -4,14 +4,14 @@ import rootDir from "../utils/pathUtil.js";
 
 class HomeModel {
   constructor(
-    id,
+    houseId,
     houseName,
     housePricePerNight,
     houseLocation,
     houseRating,
     housePhotoURL
   ) {
-    this.id = id;
+    this.houseId = houseId;
     this.houseName = houseName;
     this.housePricePerNight = housePricePerNight;
     this.houseLocation = houseLocation;
@@ -21,6 +21,8 @@ class HomeModel {
 
   save() {
     HomeModel.fetchAllHomes((registeredHomes) => {
+      this.houseId =
+        Number(registeredHomes[registeredHomes.length - 1].houseId) + 1;
       registeredHomes.push(this);
       const homeDataPath = path.join(rootDir, "data", "homes.json");
       fs.writeFile(homeDataPath, JSON.stringify(registeredHomes), (error) => {

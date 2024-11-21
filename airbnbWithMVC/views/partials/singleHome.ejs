@@ -1,15 +1,14 @@
-<li class="w-full p-3 lg:w-96">
+<li class="flex items-center justify-center w-full p-3 lg:w-96">
   <div
-    class="flex flex-col items-center justify-center w-full rounded-md shadow-xl"
+    class="flex flex-col items-center justify-center w-[360px] rounded-md shadow-xl"
   >
-    <div class="relative w-full">
+    <div class="w-[360px] h-[240px] relative">
       <img
-        class="object-fill w-full rounded-t-md"
-        src="https://png.pngtree.com/thumb_back/fh260/background/20230618/pngtree-modern-house-visualized-in-stunning-3d-render-image_3630772.jpg"
-        alt="housePhoto"
-      />
+        class="w-[360px] h-[240px] object-fill rounded-t-md"
+        src=<%=home.housePhotoURL %>
+      alt="housePhoto" />
       <button class="absolute w-5 top-2 right-2">
-        <img src="/images/red-heart.png" alt="favoriteBtn" ) />
+        <img src="/images/red-heart.png" alt="favoriteBtn" />
       </button>
     </div>
     <div class="flex items-center justify-between w-full p-3">
@@ -42,12 +41,20 @@
             ₹ <%= home.housePricePerNight %><span> / night</span>
           </div>
           <div>
+            <% if(currentPage === "hostHomesList") {%>
+            <button
+              class="p-2 text-sm font-semibold text-white bg-green-600 border border-green-600 rounded-md hover:bg-white hover:text-green-600"
+            >
+              Edit
+            </button>
+            <%} else {%>
             <button
               class="p-2 text-sm font-semibold text-white bg-green-600 border border-green-600 rounded-md hover:bg-white hover:text-green-600"
             >
               Book
             </button>
-            <a href="/homeDetails/:homeId"
+            <%}%>
+            <a href="/homeDetails/<%= home.houseId %>"
               ><button
                 class="p-2 text-sm font-semibold text-white bg-blue-800 border border-blue-800 rounded-md hover:bg-white hover:text-blue-800"
               >
