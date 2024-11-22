@@ -1,0 +1,13 @@
+<%- include("../partials/head") %>
+
+<body>
+  <%- include("../partials/navBar") %>
+  <main class="flex items-center justify-center mx-10 mt-5">
+    <div class="w-full p-10 rounded-md shadow-2xl">
+      <h1 class="text-3xl font-semibold text-center text-red-500">We are at Home Details page.</h1>
+      <%- include("../partials/singleHome", {home: home}); %>
+    </div>
+  </main>
+</body>
+
+</html>

@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind": "tailwindcss -i ./views/input.css -o ./public/output.css --watch",
-    "start": "nodemon server.js & npm run tailwind"
+    "tailwind": "npx tailwindcss -i ./views/input.css -o ./public/output.css --watch",
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",

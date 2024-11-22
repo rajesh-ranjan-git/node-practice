@@ -5,11 +5,10 @@
     <div class="w-[360px] h-[240px] relative">
       <img
         class="w-[360px] h-[240px] object-fill rounded-t-md"
-        src=<%=home.housePhotoURL %>
-      alt="housePhoto" />
-      <button class="absolute w-5 top-2 right-2">
-        <img src="/images/red-heart.png" alt="favoriteBtn" />
-      </button>
+        src="<%= home.housePhotoURL %>"
+        alt="housePhoto"
+      />
+      <%- include("favorites", {home: home}); %>
     </div>
     <div class="flex items-center justify-between w-full p-3">
       <ul class="flex flex-col items-start justify-start w-full">

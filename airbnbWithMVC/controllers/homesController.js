@@ -20,14 +20,31 @@ const getHomesList = (req, res, next) => {
   });
 };
 
-const getFavorites = (req, res, next) => {
-  const favoriteHomes = HomeModel.fetchAllHomes((favoriteHomes) => {
-    res.render("store/favorites", {
-      favoriteHomes: favoriteHomes,
-      pageTitle: "Favorites",
-      currentPage: "favorites",
+const getHomeDetails = (req, res, next) => {
+  const houseId = req.params.houseId;
+  HomeModel.fetchAllHomes((homesList) => {
+    const home = homesList.find((home) => home.houseId === houseId);
+    res.render("store/homeDetails", {
+      home: home,
+      pageTitle: "Home " + houseId,
+      currentPage: "homeDetails",
     });
   });
+};
+
+const getFavorites = (req, res, next) => {
+  const favoriteHomes = HomeModel.fetchAllHomes((favoriteHomes) => {
+    res.render("store/favoritesList", {
+      favoriteHomes: favoriteHomes,
+      pageTitle: "Favorites List",
+      currentPage: "favoritesList",
+    });
+  });
+};
+
+const postAddToFavorites = (req, res, next) => {
+  console.log("Came to add to favorites : ", req.body);
+  res.redirect("/favorites");
 };
 
 const getBookings = (req, res, next) => {
@@ -58,8 +75,6 @@ const getRegisterHome = (req, res, next) => {
 };
 
 const registerHomeSuccess = (req, res, next) => {
-  console.log("Home registered successful for : ", req.body);
-
   const {
     houseId,
     houseName,
@@ -87,7 +102,9 @@ const registerHomeSuccess = (req, res, next) => {
 const homesController = {
   getHomes,
   getHomesList,
+  getHomeDetails,
   getFavorites,
+  postAddToFavorites,
   getBookings,
   getHostHomesList,
   getRegisterHome,
