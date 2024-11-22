@@ -6,5 +6,6 @@ const hostRouter = express.Router();
 hostRouter.get("/hostHomesList", hostController.getHostHomesList);
 hostRouter.get("/registerHome", hostController.getRegisterHome);
 hostRouter.post("/registerHome", hostController.registerHomeSuccess);
+hostRouter.get("/editHome/:houseId", hostController.getEditHome);
 
 export default hostRouter;

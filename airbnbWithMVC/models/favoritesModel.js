@@ -9,7 +9,7 @@ class FavoritesModel {
     fs.readFile(favoritesDataPath, (err, data) => {
       callback(!err ? JSON.parse(data) : []);
     });
-    }
+  }
     
   static setFavorites(houseId, callback) {
     FavoritesModel.getFavorites((favorites) => {

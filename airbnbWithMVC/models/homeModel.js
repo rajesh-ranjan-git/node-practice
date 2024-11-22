@@ -37,6 +37,13 @@ class HomeModel {
       callback(!err ? JSON.parse(data) : []);
     });
   }
+
+  static findById(houseId, callback) {
+    HomeModel.fetchAllHomes((homesList) => {
+      const home = homesList.find((home) => home.houseId === houseId);
+      callback(home);
+    });
+  }
 }
 
 export default HomeModel;

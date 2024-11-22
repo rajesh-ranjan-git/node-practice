@@ -17,6 +17,16 @@ const getRegisterHome = (req, res, next) => {
   });
 };
 
+const getEditHome = (req, res, next) => {
+  const houseId = req.params.houseId;
+  const editing = req.query.editing;
+  console.log("houseId", houseId, "editing", editing)
+  res.render("host/registerHome", {
+    pageTitle: "Edit Home",
+    currentPage: "hostHomesList",
+  });
+};
+
 const registerHomeSuccess = (req, res, next) => {
   const {
     houseId,
@@ -45,6 +55,7 @@ const registerHomeSuccess = (req, res, next) => {
 const hostController = {
   getHostHomesList,
   getRegisterHome,
+  getEditHome,
   registerHomeSuccess,
 };
 
