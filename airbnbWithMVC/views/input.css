@@ -28,17 +28,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #ef4444;
 }
-
-.favorite {
-  background-image: url("/images/empty-heart.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.favoriteActive {
-  background-image: url("/images/red-heart.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}

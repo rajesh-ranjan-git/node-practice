@@ -4,8 +4,60 @@
   <%- include("../partials/navBar") %>
   <main class="flex items-center justify-center mx-10 mt-5">
     <div class="w-full p-10 rounded-md shadow-2xl">
-      <h1 class="text-3xl font-semibold text-center text-red-500">We are at Home Details page.</h1>
-      <%- include("../partials/singleHome", {home: home}); %>
+      <h1 class="pb-4 mb-2 text-3xl font-semibold text-center text-red-500 border-b"><%= home.houseName %></h1>
+      <div class="flex items-center justify-around">
+        <div class="p-4 border-r w-[50%]">
+          <img class="object-fill rounded-md" src="<%= home.housePhotoURL %>" alt="housePhoto" />
+        </div>
+        <div class="p-4 flex flex-col items-start justify-start w-[50%]">
+          <div class="pb-5 m-5 border-b">
+            <h1 class="text-3xl font-semibold">Description</h1>
+            <h3 class="mt-2 font-semibold text-neutral-500"><%= home.houseName %></h3>
+          </div>
+          <div class="pb-5 m-5 border-b">
+            <h1 class="text-3xl font-semibold">Location</h1>
+            <h3 class="mt-2 font-semibold text-neutral-500"><%= home.houseLocation%></h3>
+          </div>
+          <div class="pb-5 m-5 border-b">
+            <h1 class="text-3xl font-semibold">Price</h1>
+            <h3 class="mt-2 text-xl font-semibold text-green-600">
+              <span>₹</span>
+              <%= home.housePricePerNight %>
+              <span> / night</span>
+            </h3>
+          </div>
+          <div class="pb-5 m-5 border-b">
+            <h1 class="text-3xl font-semibold">Rating</h1>
+            <h3 class="flex items-center mt-2 font-semibold text-neutral-500">
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-5 h-5 mr-1 text-yellow-400"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <%= home.houseRating %>
+            <span> / 5</span>
+          </h3>
+          </div>
+          <div class="pb-5 m-5">
+            <form action="/favorites" method="POST">
+              <input type="hidden" name="houseId" value="<%= home.houseId %>" />
+              <button class="flex items-center justify-center p-2 font-semibold text-red-500 border border-red-500 rounded-md top-2 right-2 text-md hover:shadow-xl hover:bg-red-500 hover:text-white">
+                <div class="w-5 p-[1px] mr-2 bg-white rounded-t-md rounded-b-2xl">
+                  <svg version="1.1" id="svg2" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" sodipodi:docname="heart-empty.svg" inkscape:version="0.48.4 r9939" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 1200" enable-background="new 0 0 1200 1200" xml:space="preserve" fill="#ff0000" stroke="#ff0000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <sodipodi:namedview inkscape:cy="278.42087" inkscape:cx="644.39976" inkscape:zoom="0.37249375" showgrid="false" id="namedview30" guidetolerance="10" gridtolerance="10" objecttolerance="10" borderopacity="1" bordercolor="#666666" pagecolor="#ffffff" inkscape:current-layer="svg2" inkscape:window-maximized="1" inkscape:window-y="24" inkscape:window-height="876" inkscape:window-width="1535" inkscape:pageshadow="2" inkscape:pageopacity="0" inkscape:window-x="65"> </sodipodi:namedview> <path id="path11796" inkscape:connector-curvature="0" d="M832.486,46.17c-48.316,0.497-97.873,9.932-146.357,29.285l-2.201,0.934 l-2.201,1.134c-30.735,15.652-58.748,35.232-83.651,58.436c-134.023-115.917-347.394-124.33-493.37,7.271l-1.468,1.334l-1.334,1.401 C-26.152,279.721-23.153,485.712,53.607,648.474l0.667,1.268l0.667,1.334c90.404,167.407,259.216,309.652,413.054,426.596l0.4,0.333 l0.333,0.268c9.897,7.256,26.915,22.257,46.562,37.022c19.646,14.766,41.839,30.948,74.312,37.156l7.271,1.4l7.338-0.601 c34.082-2.939,47.452-15.523,69.843-29.617c22.391-14.095,47.177-31.986,72.645-51.565 c50.202-38.595,102.147-83.079,136.351-114.804c0.44-0.409,1.166-0.997,1.601-1.401c0.071-0.06,0.13-0.14,0.2-0.2 c72.052-61.482,143.423-132.361,203.926-215.732c0.019-0.025,0.048-0.041,0.065-0.066c0.114-0.153,0.22-0.313,0.334-0.467 c95.955-129.193,142.502-303.295,86.987-474.825l-1.001-3.069l-1.334-2.869C1111.497,123.881,977.435,44.681,832.486,46.17z M834.221,151.702c104.434-2.402,195.973,53.518,241.415,149.158c41.99,133.897,5.693,270.32-72.512,375.364l-0.2,0.267 l-0.199,0.268c-54.48,75.18-120.459,140.988-188.85,199.189l-0.867,0.801l-0.867,0.8c-30.797,28.667-82.925,73.323-130.547,109.935 c-23.812,18.306-46.64,34.665-64.373,45.828c-6.668,4.197-13.008,7.059-18.212,9.272c-5.469-2.988-12.41-7.196-19.611-12.607 c-14.5-10.897-29.94-24.809-46.763-37.224c-0.262-0.199-0.538-0.4-0.8-0.601c-149.294-113.553-306.55-251.435-382.169-390.44 C88.275,470.559,90.954,313.58,177.683,221.344c117.926-104.852,293.123-82.057,380.5,25.549l42.56,52.366l41.159-53.433 c23.682-30.723,51.943-54.21,86.253-72.044C764.118,159.733,799.849,152.492,834.221,151.702L834.221,151.702z"></path> </g></svg>
+                </div>
+                <span>Add to Favorites</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 </body>

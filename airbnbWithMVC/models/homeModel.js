@@ -22,7 +22,7 @@ class HomeModel {
   save() {
     HomeModel.fetchAllHomes((registeredHomes) => {
       this.houseId =
-        Number(registeredHomes[registeredHomes.length - 1].houseId) + 1;
+        (Number(registeredHomes[registeredHomes.length - 1].houseId) + 1).toString();
       registeredHomes.push(this);
       const homeDataPath = path.join(rootDir, "data", "homes.json");
       fs.writeFile(homeDataPath, JSON.stringify(registeredHomes), (error) => {
