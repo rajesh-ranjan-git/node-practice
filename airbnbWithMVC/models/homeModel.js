@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 import rootDir from "../utils/pathUtil.js";
 
+const homeDataPath = path.join(rootDir, "data", "homes.json");
+
 class HomeModel {
   constructor(
     houseId,
@@ -24,7 +26,6 @@ class HomeModel {
       this.houseId =
         (Number(registeredHomes[registeredHomes.length - 1].houseId) + 1).toString();
       registeredHomes.push(this);
-      const homeDataPath = path.join(rootDir, "data", "homes.json");
       fs.writeFile(homeDataPath, JSON.stringify(registeredHomes), (error) => {
         console.log("File writing concluded, ", error);
       });
@@ -32,7 +33,6 @@ class HomeModel {
   }
 
   static fetchAllHomes(callback) {
-    const homeDataPath = path.join(rootDir, "data", "homes.json");
     fs.readFile(homeDataPath, (err, data) => {
       callback(!err ? JSON.parse(data) : []);
     });

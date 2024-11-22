@@ -6,7 +6,7 @@
     <div class="w-full p-10 rounded-md shadow-2xl">
       <h1 class="text-3xl font-semibold text-center text-red-500">Here are your favorites list.</h1>
       <ul class="flex flex-wrap justify-around mx-2 my-4">
-        <% favoriteHomes.forEach(function(home){ %>
+        <% favoritesWithDetails.forEach(function(home){ %>
           <%- include("../partials/singleHome", {home: home}); %>
         <% }); %>
       </ul>

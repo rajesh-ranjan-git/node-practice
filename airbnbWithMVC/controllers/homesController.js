@@ -1,7 +1,8 @@
+import FavoritesModel from "../models/favoritesModel.js";
 import HomeModel from "../models/homeModel.js";
 
 const getHomes = (req, res, next) => {
-  const registeredHomes = HomeModel.fetchAllHomes((registeredHomes) => {
+  HomeModel.fetchAllHomes((registeredHomes) => {
     res.render("index", {
       registeredHomes: registeredHomes,
       pageTitle: "AirBnB",
@@ -11,7 +12,7 @@ const getHomes = (req, res, next) => {
 };
 
 const getHomesList = (req, res, next) => {
-  const homesList = HomeModel.fetchAllHomes((homesList) => {
+  HomeModel.fetchAllHomes((homesList) => {
     res.render("store/homesList", {
       homesList: homesList,
       pageTitle: "Homes List",
@@ -32,23 +33,30 @@ const getHomeDetails = (req, res, next) => {
   });
 };
 
-const getFavorites = (req, res, next) => {
-  const favoriteHomes = HomeModel.fetchAllHomes((favoriteHomes) => {
-    res.render("store/favoritesList", {
-      favoriteHomes: favoriteHomes,
-      pageTitle: "Favorites List",
-      currentPage: "favoritesList",
-    });
+const getFavoritesList = (req, res, next) => {
+  FavoritesModel.getFavorites((favorites) => {
+    HomeModel.fetchAllHomes((homesList) => {
+      const favoritesWithDetails = favorites.map(houseId => homesList.find(home => home.houseId === houseId));
+      res.render("store/favoritesList", {
+        favoritesWithDetails: favoritesWithDetails,
+        pageTitle: "Favorites List",
+        currentPage: "favoritesList",
+      });
+    })
   });
 };
 
 const postAddToFavorites = (req, res, next) => {
-  console.log("Came to add to favorites : ", req.body);
-  res.redirect("/favorites");
+  FavoritesModel.setFavorites(req.body.houseId, error => {
+    if (error) {
+      console.log("Error while marking favorite : ", error);
+    }
+    res.redirect("/favorites");
+  });
 };
 
 const getBookings = (req, res, next) => {
-  const bookings = HomeModel.fetchAllHomes((bookings) => {
+  HomeModel.fetchAllHomes((bookings) => {
     res.render("store/bookings", {
       bookings: bookings,
       pageTitle: "Bookings",
@@ -58,7 +66,7 @@ const getBookings = (req, res, next) => {
 };
 
 const getHostHomesList = (req, res, next) => {
-  const hostHomesList = HomeModel.fetchAllHomes((hostHomesList) => {
+  HomeModel.fetchAllHomes((hostHomesList) => {
     res.render("host/hostHomesList", {
       hostHomesList: hostHomesList,
       pageTitle: "Homes List",
@@ -103,7 +111,7 @@ const homesController = {
   getHomes,
   getHomesList,
   getHomeDetails,
-  getFavorites,
+  getFavoritesList,
   postAddToFavorites,
   getBookings,
   getHostHomesList,
