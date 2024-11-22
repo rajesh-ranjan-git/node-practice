@@ -1,13 +1,13 @@
 import express from "express";
-import homesController from "../controllers/homesController.js";
+import storeController from "../controllers/storeController.js";
 
 const storeRouter = express.Router();
 
-storeRouter.get("/", homesController.getHomes);
-storeRouter.get("/homesList", homesController.getHomesList);
-storeRouter.get("/bookings", homesController.getBookings);
-storeRouter.get("/favorites", homesController.getFavoritesList);
-storeRouter.post("/favorites", homesController.postAddToFavorites);
-storeRouter.get("/homeDetails/:houseId", homesController.getHomeDetails);
+storeRouter.get("/", storeController.getHomes);
+storeRouter.get("/homesList", storeController.getHomesList);
+storeRouter.get("/bookings", storeController.getBookings);
+storeRouter.get("/favorites", storeController.getFavoritesList);
+storeRouter.post("/favorites", storeController.postAddToFavorites);
+storeRouter.get("/homeDetails/:houseId", storeController.getHomeDetails);
 
 export default storeRouter;

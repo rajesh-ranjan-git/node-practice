@@ -65,58 +65,13 @@ const getBookings = (req, res, next) => {
   });
 };
 
-const getHostHomesList = (req, res, next) => {
-  HomeModel.fetchAllHomes((hostHomesList) => {
-    res.render("host/hostHomesList", {
-      hostHomesList: hostHomesList,
-      pageTitle: "Homes List",
-      currentPage: "hostHomesList",
-    });
-  });
-};
-
-const getRegisterHome = (req, res, next) => {
-  res.render("host/registerHome", {
-    pageTitle: "Register Home",
-    currentPage: "registerHome",
-  });
-};
-
-const registerHomeSuccess = (req, res, next) => {
-  const {
-    houseId,
-    houseName,
-    housePricePerNight,
-    houseLocation,
-    houseRating,
-    housePhotoURL,
-  } = req.body;
-  const home = new HomeModel(
-    houseId,
-    houseName,
-    housePricePerNight,
-    houseLocation,
-    houseRating,
-    housePhotoURL
-  );
-  home.save();
-
-  res.render("host/registerHomeSuccess", {
-    pageTitle: "Register Home Success",
-    currentPage: "registerHomeSuccess",
-  });
-};
-
-const homesController = {
+const storeController = {
   getHomes,
   getHomesList,
   getHomeDetails,
   getFavoritesList,
   postAddToFavorites,
   getBookings,
-  getHostHomesList,
-  getRegisterHome,
-  registerHomeSuccess,
 };
 
-export default homesController;
+export default storeController;

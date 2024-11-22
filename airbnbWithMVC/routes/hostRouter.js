@@ -1,10 +1,10 @@
 import express from "express";
-import homesController from "../controllers/homesController.js";
+import hostController from "../controllers/hostController.js";
 
 const hostRouter = express.Router();
 
-hostRouter.get("/hostHomesList", homesController.getHostHomesList);
-hostRouter.get("/registerHome", homesController.getRegisterHome);
-hostRouter.post("/registerHome", homesController.registerHomeSuccess);
+hostRouter.get("/hostHomesList", hostController.getHostHomesList);
+hostRouter.get("/registerHome", hostController.getRegisterHome);
+hostRouter.post("/registerHome", hostController.registerHomeSuccess);
 
 export default hostRouter;
