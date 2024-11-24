@@ -11,7 +11,7 @@ class FavoritesModel {
     });
   }
     
-  static setFavorites(houseId, callback) {
+  static addToFavorites(houseId, callback) {
     FavoritesModel.getFavorites((favorites) => {
         if (favorites.includes(houseId)) {
           callback("Home is already marked favorite.");
@@ -19,6 +19,15 @@ class FavoritesModel {
           favorites.push(houseId);
           fs.writeFile(favoritesDataPath, JSON.stringify(favorites), callback);
         }
+    });
+  }
+  
+  static deleteFromFavorites(houseId, callback) {
+    FavoritesModel.getFavorites((favorites) => {
+      if (favorites.includes(houseId)) {
+        favorites = favorites.filter(fav => fav !== houseId.toString())
+        fs.writeFile(favoritesDataPath, JSON.stringify(favorites), callback);
+      }
     });
   }
 }

@@ -46,10 +46,14 @@ const getFavoritesList = (req, res, next) => {
   });
 };
 
-const postAddToFavorites = (req, res, next) => {
-  FavoritesModel.setFavorites(req.body.houseId, error => {
+const setFavorites = (req, res, next) => {
+  const houseId = req.body.houseId;
+  FavoritesModel.addToFavorites(houseId, error => {
     if (error) {
       console.log("Error while marking favorite : ", error);
+      FavoritesModel.deleteFromFavorites(houseId, (error) => {
+        console.log("Favorite removed.");
+      });
     }
     res.redirect("/favorites");
   });
@@ -70,7 +74,7 @@ const storeController = {
   getHomesList,
   getHomeDetails,
   getFavoritesList,
-  postAddToFavorites,
+  setFavorites,
   getBookings,
 };
 

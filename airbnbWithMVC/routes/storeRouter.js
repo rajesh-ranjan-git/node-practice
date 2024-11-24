@@ -7,7 +7,7 @@ storeRouter.get("/", storeController.getHomes);
 storeRouter.get("/homesList", storeController.getHomesList);
 storeRouter.get("/bookings", storeController.getBookings);
 storeRouter.get("/favorites", storeController.getFavoritesList);
-storeRouter.post("/favorites", storeController.postAddToFavorites);
+storeRouter.post("/favorites", storeController.setFavorites);
 storeRouter.get("/homeDetails/:houseId", storeController.getHomeDetails);
 
 export default storeRouter;

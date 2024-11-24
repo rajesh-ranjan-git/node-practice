@@ -1,3 +1,4 @@
+import FavoritesModel from "../models/favoritesModel.js";
 import HomeModel from "../models/homeModel.js";
 
 const getHostHomesList = (req, res, next) => {
@@ -78,12 +79,24 @@ const editHomeSuccess = (req, res, next) => {
   res.redirect("/hostHomesList");
 };
 
+const deleteHome = (req, res, next) => {
+  const houseId = req.params.houseId;
+  HomeModel.deleteHome(houseId, (error) => {
+    console.log("Home deleted.");
+  });
+  FavoritesModel.deleteFromFavorites(houseId, (error) => {
+    console.log("Favorite removed.");
+  });
+  res.redirect("/hostHomesList");
+}
+
 const hostController = {
   getHostHomesList,
   getRegisterHome,
   registerHomeSuccess,
   getEditHome,
-  editHomeSuccess
+  editHomeSuccess,
+  deleteHome
 };
 
 export default hostController;

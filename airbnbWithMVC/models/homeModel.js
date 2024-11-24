@@ -31,7 +31,7 @@ class HomeModel {
         homesList.push(this);        
       }
       fs.writeFile(homeDataPath, JSON.stringify(homesList), (error) => {
-        console.log("File writing concluded, ", error);
+        console.log("File writing concluded.");
       });
     });
   }
@@ -46,6 +46,13 @@ class HomeModel {
     HomeModel.fetchAllHomes((homesList) => {
       const homeFound = homesList.find((home) => home.houseId === houseId);
       callback(homeFound);
+    });
+  }
+
+  static deleteHome(houseId, callback) {
+    HomeModel.fetchAllHomes((homesList) => {
+      homesList = homesList.filter(home => home.houseId !== houseId);      
+      fs.writeFile(homeDataPath, JSON.stringify(homesList), callback);
     });
   }
 }
