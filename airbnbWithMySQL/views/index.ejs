@@ -1,0 +1,18 @@
+<%- include("partials/head") %>
+
+<body>
+  <%- include("partials/navBar") %>
+  <main class="flex items-center justify-center mx-10 mt-5">
+    <div class="w-full p-10 rounded-md shadow-2xl">
+      <h1 class="text-3xl font-semibold text-center text-red-500">Welcome to AirBnB</h1>
+      <ul class="flex flex-wrap justify-around mx-2 my-4">
+        <% registeredHomes.forEach(function(home){ %>
+            <%- include("partials/singleHome", {home: home}); %>
+        <% }); %>
+      </ul>
+
+    </div>
+  </main>
+</body>
+
+</html>
