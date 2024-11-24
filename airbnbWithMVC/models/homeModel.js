@@ -22,11 +22,15 @@ class HomeModel {
   }
 
   save() {
-    HomeModel.fetchAllHomes((registeredHomes) => {
-      this.houseId =
-        (Number(registeredHomes[registeredHomes.length - 1].houseId) + 1).toString();
-      registeredHomes.push(this);
-      fs.writeFile(homeDataPath, JSON.stringify(registeredHomes), (error) => {
+    HomeModel.fetchAllHomes((homesList) => {
+      if (this.houseId) {
+        homesList = homesList.map(home => home.houseId === this.houseId ? this : home);
+      } else {
+        this.houseId =
+        (Number(homesList[homesList.length - 1].houseId) + 1).toString();
+        homesList.push(this);        
+      }
+      fs.writeFile(homeDataPath, JSON.stringify(homesList), (error) => {
         console.log("File writing concluded, ", error);
       });
     });
@@ -40,8 +44,8 @@ class HomeModel {
 
   static findById(houseId, callback) {
     HomeModel.fetchAllHomes((homesList) => {
-      const home = homesList.find((home) => home.houseId === houseId);
-      callback(home);
+      const homeFound = homesList.find((home) => home.houseId === houseId);
+      callback(homeFound);
     });
   }
 }
