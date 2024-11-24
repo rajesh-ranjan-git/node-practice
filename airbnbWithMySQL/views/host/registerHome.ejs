@@ -34,6 +34,11 @@
             placeholder="Enter your Rating..." value="<%= editing ? home.houseRating : '' %>" />
         </div>
         <div class="flex items-center justify-between w-full">
+          <label class="font-semibold " for="houseDescription">Description : </label>
+          <textarea class="w-[70%] p-2 my-1 border rounded-md " id="houseDescription" name="houseDescription"
+            placeholder="Describe your home..."><%= editing ? home.houseDescription : '' %></textarea>
+        </div>
+        <div class="flex items-center justify-between w-full">
           <label class="font-semibold " for="housePhotoURL">Photo URL : </label>
           <input class="w-[70%] p-2 my-1 border rounded-md " type="text" id="housePhotoURL" name="housePhotoURL"
             placeholder="Provide Photo URL..." value="<%= editing ? home.housePhotoURL : '' %>" />

@@ -2,8 +2,7 @@ import FavoritesModel from "../models/favoritesModel.js";
 import HomeModel from "../models/homeModel.js";
 
 const getHomes = (req, res, next) => {
-  HomeModel.fetchAllHomes((registeredHomes) => {
-    FavoritesModel.getFavorites((favorites) => {
+  HomeModel.fetchAllHomes().then(([registeredHomes]) => {
       FavoritesModel.getFavorites((favorites) => {
         res.render("index", {
           favorites: favorites,
@@ -12,12 +11,12 @@ const getHomes = (req, res, next) => {
           currentPage: "index",
         });
       });
-    });
-  });
+    })
+    .catch(error => console.log("Error while fetching homeslist from db : ", error));
 };
 
 const getHomesList = (req, res, next) => {
-  HomeModel.fetchAllHomes((homesList) => {
+  HomeModel.fetchAllHomes().then(([homesList]) => {
     FavoritesModel.getFavorites((favorites) => {
       res.render("store/homesList", {
         favorites: favorites,
@@ -31,8 +30,8 @@ const getHomesList = (req, res, next) => {
 
 const getHomeDetails = (req, res, next) => {
   const houseId = req.params.houseId;
-  HomeModel.fetchAllHomes((homesList) => {
-    const home = homesList.find((home) => home.houseId === houseId);
+  HomeModel.findById(houseId).then(([homes]) => {
+    const home = homes[0];
     FavoritesModel.getFavorites((favorites) => {
       res.render("store/homeDetails", {
         favorites: favorites,
@@ -46,7 +45,7 @@ const getHomeDetails = (req, res, next) => {
 
 const getFavoritesList = (req, res, next) => {
   FavoritesModel.getFavorites((favorites) => {
-    HomeModel.fetchAllHomes((homesList) => {
+    HomeModel.fetchAllHomes().then(([homesList]) => {
       const favoritesWithDetails = favorites.map((houseId) =>
         homesList.find((home) => home.houseId === houseId)
       );
@@ -74,7 +73,7 @@ const setFavorites = (req, res, next) => {
 };
 
 const getBookings = (req, res, next) => {
-  HomeModel.fetchAllHomes((bookings) => {
+  HomeModel.fetchAllHomes().then(([bookings]) => {
     FavoritesModel.getFavorites((favorites) => {
       res.render("store/bookings", {
         favorites: favorites,

@@ -2,7 +2,7 @@ import FavoritesModel from "../models/favoritesModel.js";
 import HomeModel from "../models/homeModel.js";
 
 const getHostHomesList = (req, res, next) => {
-  HomeModel.fetchAllHomes((hostHomesList) => {
+  HomeModel.fetchAllHomes().then(([hostHomesList]) => {
     res.render("host/hostHomesList", {
       hostHomesList: hostHomesList,
       pageTitle: "Homes List",
@@ -27,6 +27,7 @@ const registerHomeSuccess = (req, res, next) => {
     houseLocation,
     houseRating,
     housePhotoURL,
+    houseDescription
   } = req.body;
   const home = new HomeModel(
     houseId,
@@ -34,7 +35,8 @@ const registerHomeSuccess = (req, res, next) => {
     housePricePerNight,
     houseLocation,
     houseRating,
-    housePhotoURL
+    housePhotoURL,
+    houseDescription
   );
   home.save();
   res.redirect("/hostHomesList");
@@ -66,6 +68,7 @@ const editHomeSuccess = (req, res, next) => {
     houseLocation,
     houseRating,
     housePhotoURL,
+    houseDescription
   } = req.body;
   const home = new HomeModel(
     houseId,
@@ -73,7 +76,8 @@ const editHomeSuccess = (req, res, next) => {
     housePricePerNight,
     houseLocation,
     houseRating,
-    housePhotoURL
+    housePhotoURL,
+    houseDescription
   );
   home.save();
   res.redirect("/hostHomesList");
@@ -81,13 +85,14 @@ const editHomeSuccess = (req, res, next) => {
 
 const deleteHome = (req, res, next) => {
   const houseId = req.params.houseId;
-  HomeModel.deleteHome(houseId, (error) => {
-    console.log("Home deleted.");
+  HomeModel.deleteHome(houseId).then(() => {
+    res.redirect("/hostHomesList");
+  }).catch(error => {
+    console.log("Error while deleting home : ", error);
   });
-  FavoritesModel.deleteFromFavorites(houseId, (error) => {
-    console.log("Favorite removed.");
-  });
-  res.redirect("/hostHomesList");
+  // FavoritesModel.deleteFromFavorites(houseId, (error) => {
+  //   console.log("Favorite removed.");
+  // });
 }
 
 const hostController = {
