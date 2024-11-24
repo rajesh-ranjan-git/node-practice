@@ -9,9 +9,8 @@
         alt="housePhoto"
       />
       <% if(currentPage !== "hostHomesList") {%>
-        <%- include("favorites", {home: home}); %>
+        <%- include("favorites", {home:home}, favorites); %>
       <% } %>
-
     </div>
     <div class="flex items-center justify-between w-full p-3">
       <ul class="flex flex-col items-start justify-start w-full">
@@ -44,14 +43,18 @@
           </div>
           <div class="flex items-center justify-center">
             <% if(currentPage === "hostHomesList") {%>
-            <a class="p-2 mr-1 text-sm font-semibold text-white bg-blue-500 border border-blue-500 rounded-md hover:bg-white hover:text-blue-500" href="/editHome/<%= home.houseId %>?editing=true">
-                Edit
+            <a
+              class="p-2 mr-1 text-sm font-semibold text-white bg-blue-500 border border-blue-500 rounded-md hover:bg-white hover:text-blue-500"
+              href="/editHome/<%= home.houseId %>?editing=true"
+            >
+              Edit
             </a>
             <form method="POST" action="/deleteHome/<%= home.houseId %>">
               <button
-                  class="p-2 text-sm font-semibold text-white bg-red-800 border border-red-800 rounded-md hover:bg-white hover:text-red-800" type="submit"
-                >
-                  Delete
+                class="p-2 text-sm font-semibold text-white bg-red-800 border border-red-800 rounded-md hover:bg-white hover:text-red-800"
+                type="submit"
+              >
+                Delete
               </button>
             </form>
             <% } else { %>

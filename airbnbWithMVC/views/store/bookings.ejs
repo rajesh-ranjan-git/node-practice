@@ -7,7 +7,7 @@
       <h1 class="text-3xl font-semibold text-center text-red-500">Here are your bookings.</h1>
       <ul class="flex flex-wrap justify-around mx-2 my-4">
         <% bookings.forEach(function(home){ %>
-          <%- include("../partials/singleHome", {home: home}); %>
+          <%- include("../partials/singleHome", {home: home}, favorites); %>
         <% }); %>
       </ul>
 

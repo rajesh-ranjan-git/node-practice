@@ -3,20 +3,28 @@ import HomeModel from "../models/homeModel.js";
 
 const getHomes = (req, res, next) => {
   HomeModel.fetchAllHomes((registeredHomes) => {
-    res.render("index", {
-      registeredHomes: registeredHomes,
-      pageTitle: "AirBnB",
-      currentPage: "index",
+    FavoritesModel.getFavorites((favorites) => {
+      FavoritesModel.getFavorites((favorites) => {
+        res.render("index", {
+          favorites: favorites,
+          registeredHomes: registeredHomes,
+          pageTitle: "AirBnB",
+          currentPage: "index",
+        });
+      });
     });
   });
 };
 
 const getHomesList = (req, res, next) => {
   HomeModel.fetchAllHomes((homesList) => {
-    res.render("store/homesList", {
-      homesList: homesList,
-      pageTitle: "Homes List",
-      currentPage: "homesList",
+    FavoritesModel.getFavorites((favorites) => {
+      res.render("store/homesList", {
+        favorites: favorites,
+        homesList: homesList,
+        pageTitle: "Homes List",
+        currentPage: "homesList",
+      });
     });
   });
 };
@@ -25,10 +33,13 @@ const getHomeDetails = (req, res, next) => {
   const houseId = req.params.houseId;
   HomeModel.fetchAllHomes((homesList) => {
     const home = homesList.find((home) => home.houseId === houseId);
-    res.render("store/homeDetails", {
-      home: home,
-      pageTitle: "Home " + houseId,
-      currentPage: "homeDetails",
+    FavoritesModel.getFavorites((favorites) => {
+      res.render("store/homeDetails", {
+        favorites: favorites,
+        home: home,
+        pageTitle: "Home " + houseId,
+        currentPage: "homeDetails",
+      });
     });
   });
 };
@@ -36,19 +47,22 @@ const getHomeDetails = (req, res, next) => {
 const getFavoritesList = (req, res, next) => {
   FavoritesModel.getFavorites((favorites) => {
     HomeModel.fetchAllHomes((homesList) => {
-      const favoritesWithDetails = favorites.map(houseId => homesList.find(home => home.houseId === houseId));
+      const favoritesWithDetails = favorites.map((houseId) =>
+        homesList.find((home) => home.houseId === houseId)
+      );
       res.render("store/favoritesList", {
+        favorites: favorites,
         favoritesWithDetails: favoritesWithDetails,
         pageTitle: "Favorites List",
         currentPage: "favoritesList",
       });
-    })
+    });
   });
 };
 
 const setFavorites = (req, res, next) => {
   const houseId = req.body.houseId;
-  FavoritesModel.addToFavorites(houseId, error => {
+  FavoritesModel.addToFavorites(houseId, (error) => {
     if (error) {
       console.log("Error while marking favorite : ", error);
       FavoritesModel.deleteFromFavorites(houseId, (error) => {
@@ -61,10 +75,13 @@ const setFavorites = (req, res, next) => {
 
 const getBookings = (req, res, next) => {
   HomeModel.fetchAllHomes((bookings) => {
-    res.render("store/bookings", {
-      bookings: bookings,
-      pageTitle: "Bookings",
-      currentPage: "bookings",
+    FavoritesModel.getFavorites((favorites) => {
+      res.render("store/bookings", {
+        favorites: favorites,
+        bookings: bookings,
+        pageTitle: "Bookings",
+        currentPage: "bookings",
+      });
     });
   });
 };
