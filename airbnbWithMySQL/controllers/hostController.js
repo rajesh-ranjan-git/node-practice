@@ -46,17 +46,17 @@ const getEditHome = (req, res, next) => {
   const houseId = req.params.houseId;
   const editing = req.query.editing === "true";
 
-  HomeModel.findById(houseId, (home) => {
-    if (!home) {
-      console.log("Home not found for editing.");
-      return res.redirect("/hostHomesList");
-    }
-    res.render("host/registerHome", {
+  HomeModel.findById(houseId).then(([homes]) => {
+    const home = homes[0];
+    return res.render("host/registerHome", {
       home: home,
       editing: editing,
       pageTitle: "Edit Home",
       currentPage: "hostHomesList",
     });
+  }).catch(error => {
+    console.log("Home not found for editing.");
+    return res.redirect("/hostHomesList");
   });
 };
 

@@ -20,7 +20,11 @@ class HomeModel {
   }
 
   save() {
-    return db.execute("INSERT INTO homeslist (houseName, housePricePerNight, houseLocation, houseRating, housePhotoURL, houseDescription) VALUES (?, ?, ?, ?, ?, ?)", [this.houseName, this.housePricePerNight, this.houseLocation, this.houseRating, this.housePhotoURL, this.houseDescription]);
+    if (!this.houseId) {
+      return db.execute("INSERT INTO homeslist (houseName, housePricePerNight, houseLocation, houseRating, housePhotoURL, houseDescription) VALUES (?, ?, ?, ?, ?, ?)", [this.houseName, this.housePricePerNight, this.houseLocation, this.houseRating, this.housePhotoURL, this.houseDescription]);
+    } else {
+      return db.execute("UPDATE homeslist SET houseName = ?, housePricePerNight = ?, houseLocation = ?, houseRating = ?, housePhotoURL = ?, houseDescription = ? WHERE houseId = ?", [this.houseName, this.housePricePerNight, this.houseLocation, this.houseRating, this.housePhotoURL, this.houseDescription, this.houseId]);
+    }
   }
 
   static fetchAllHomes() {
