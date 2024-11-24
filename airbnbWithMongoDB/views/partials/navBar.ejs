@@ -1,0 +1,48 @@
+<header
+  class="flex items-center justify-start px-10 text-white bg-red-500 min-h-12"
+>
+  <ul class="flex flex-wrap items-center justify-start">
+    <a class="mx-2" href="/">
+      <li
+        class="<%= currentPage === 'index' ? 'bg-red-400' : 'hover:bg-red-400' %> px-5 py-2 mx-2 rounded-md"
+      >
+        Home
+      </li>
+    </a>
+    <a class="mx-2" href="/homesList">
+      <li
+        class="<%= currentPage === 'homesList' ? 'bg-red-400' : 'hover:bg-red-400' %> px-5 py-2 rounded-md hover:bg-red-400"
+      >
+        Homes List
+      </li>
+    </a>
+    <a class="mx-2" href="/favorites">
+      <li
+        class="<%= currentPage === 'favoritesList' ? 'bg-red-400' : 'hover:bg-red-400' %> px-5 py-2 rounded-md hover:bg-red-400"
+      >
+        Favorites List
+      </li>
+    </a>
+    <a class="mx-2" href="/bookings">
+      <li
+        class="<%= currentPage === 'bookings' ? 'bg-red-400' : 'hover:bg-red-400' %> px-5 py-2 rounded-md hover:bg-red-400"
+      >
+        Bookings
+      </li>
+    </a>
+    <a class="mx-2" href="/hostHomesList">
+      <li
+        class="<%= currentPage === 'hostHomesList' ? 'bg-red-400' : 'hover:bg-red-400' %> px-5 py-2 rounded-md hover:bg-red-400"
+      >
+        Host Home List
+      </li>
+    </a>
+    <a class="mx-2" href="/registerHome">
+      <li
+        class="<%= currentPage === 'registerHome' ? 'bg-red-400' : 'hover:bg-red-400' %> px-5 py-2 rounded-md hover:bg-red-400"
+      >
+        Register Home
+      </li>
+    </a>
+  </ul>
+</header>
