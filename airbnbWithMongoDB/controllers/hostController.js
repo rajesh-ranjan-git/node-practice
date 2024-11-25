@@ -1,4 +1,3 @@
-import FavoritesModel from "../models/favoritesModel.js";
 import HomeModel from "../models/homeModel.js";
 
 const getHostHomesList = (req, res, next) => {

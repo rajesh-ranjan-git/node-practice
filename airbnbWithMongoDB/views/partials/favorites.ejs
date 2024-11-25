@@ -1,8 +1,8 @@
 <form action="/favorites" method="POST">
-  <input type="hidden" name="_id" value="<%= home._id %>" />
+  <input type="hidden" name="houseId" value="<%= home._id %>" />
   <button class="absolute w-5 top-2 right-4" type="submit">
     <div class="w-7">
-      <% if(favorites.includes(home._id)) { %>
+      <% if(favorites.includes(home._id.toString())) { %>
         <img src="\images\red-heart.png" alt="favoriteImg" />
       <% } else { %>
       <svg
