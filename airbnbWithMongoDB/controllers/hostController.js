@@ -1,4 +1,5 @@
 import HomeModel from "../models/homeModel.js";
+import FavoritesModel from "../models/favoritesModel.js";
 
 const getHostHomesList = (req, res, next) => {
   HomeModel.fetchAllHomes().then(hostHomesList => {
@@ -88,13 +89,14 @@ const editHomeSuccess = (req, res, next) => {
 const deleteHome = (req, res, next) => {
   const _id = req.params._id;
   HomeModel.deleteHome(_id).then(() => {
-    res.redirect("/hostHomesList");
+    FavoritesModel.deleteFromFavorites(_id).then(() => {
+      res.redirect("/hostHomesList");
+    }).catch(error => {
+      console.log("Error while removing favorites : ", error);
+    });
   }).catch(error => {
     console.log("Error while deleting home : ", error);
   });
-  // FavoritesModel.deleteFromFavorites(_id, (error) => {
-  //   console.log("Favorite removed.");
-  // });
 }
 
 const hostController = {

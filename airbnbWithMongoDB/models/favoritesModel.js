@@ -15,9 +15,9 @@ class FavoritesModel {
     return db.collection("favoritesList").insertOne(this);
   }
   
-  static deleteFromFavorites(_id) {
+  static deleteFromFavorites(id) {
     const db = getDB();
-    return db.collection("favoritesList").deleteOne({ _id: new ObjectId(String(_id)) });
+    return db.collection("favoritesList").deleteOne({ houseId: id });
   }
 }
 

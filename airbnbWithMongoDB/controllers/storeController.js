@@ -64,15 +64,28 @@ const getFavoritesList = (req, res, next) => {
 
 const setFavorites = (req, res, next) => {
   const houseId = req.body.houseId;
-  const favorite = new FavoritesModel(houseId);
-  favorite.addToFavorites().then(result => {
-    console.log("Home added to favorites : ", result);
-  }).catch (error => {
-    console.log("Error while adding favorites : ", error);
-  }).finally(() => {
-    res.redirect("/favorites");
+  FavoritesModel.getFavorites().then((favorites) => {
+    favorites = favorites.map(fav => fav.houseId);
+    if (!favorites.includes(houseId)) {
+      const favorite = new FavoritesModel(houseId);
+      favorite.addToFavorites().then(result => {
+        console.log("Home added to favorites : ", result);
+      }).catch(error => {
+        console.log("Error while adding favorites : ", error);
+      }).finally(() => {
+        res.redirect("/favorites");
+      });
+    } else {
+      FavoritesModel.deleteFromFavorites(houseId).then(result => {
+        console.log("Home removed from favorites.");
+      }).catch(error => {
+        console.log("Error while removing favorites.");
+      }).finally(() => {
+        res.redirect("/favorites");
+      });
+    }
   });
-};
+}
 
 const getBookings = (req, res, next) => {
   HomeModel.fetchAllHomes().then(bookings => {
