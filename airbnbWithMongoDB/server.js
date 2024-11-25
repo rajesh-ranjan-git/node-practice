@@ -4,6 +4,7 @@ import rootDir from "./utils/pathUtil.js";
 import storeRouter from "./routes/storeRouter.js";
 import hostRouter from "./routes/hostRouter.js";
 import errorRouter from "./routes/errorRouter.js";
+import { mongoConnect } from "./utils/dbUtil.js";
 
 const PORT = process.env.PORT || 8001;
 
@@ -20,6 +21,9 @@ server.use(storeRouter);
 server.use(hostRouter);
 server.use(errorRouter);
 
-server.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
+mongoConnect(() => {
+  console.log("MongoDB Client connected...");
+  server.listen(PORT, () => {
+    console.log(`Server is running at http://localhost:${PORT}`);
+  });
 });

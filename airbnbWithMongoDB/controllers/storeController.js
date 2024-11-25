@@ -2,7 +2,7 @@ import FavoritesModel from "../models/favoritesModel.js";
 import HomeModel from "../models/homeModel.js";
 
 const getHomes = (req, res, next) => {
-  HomeModel.fetchAllHomes().then(([registeredHomes]) => {
+  HomeModel.fetchAllHomes().then(registeredHomes => {
       FavoritesModel.getFavorites((favorites) => {
         res.render("index", {
           favorites: favorites,
@@ -16,7 +16,7 @@ const getHomes = (req, res, next) => {
 };
 
 const getHomesList = (req, res, next) => {
-  HomeModel.fetchAllHomes().then(([homesList]) => {
+  HomeModel.fetchAllHomes().then(homesList => {
     FavoritesModel.getFavorites((favorites) => {
       res.render("store/homesList", {
         favorites: favorites,
@@ -29,14 +29,13 @@ const getHomesList = (req, res, next) => {
 };
 
 const getHomeDetails = (req, res, next) => {
-  const houseId = req.params.houseId;
-  HomeModel.findById(houseId).then(([homes]) => {
-    const home = homes[0];
+  const _id = req.params._id;
+  HomeModel.findById(_id).then(home => {
     FavoritesModel.getFavorites((favorites) => {
       res.render("store/homeDetails", {
         favorites: favorites,
         home: home,
-        pageTitle: "Home " + houseId,
+        pageTitle: "Home " + _id,
         currentPage: "homeDetails",
       });
     });
@@ -45,9 +44,9 @@ const getHomeDetails = (req, res, next) => {
 
 const getFavoritesList = (req, res, next) => {
   FavoritesModel.getFavorites((favorites) => {
-    HomeModel.fetchAllHomes().then(([homesList]) => {
-      const favoritesWithDetails = favorites.map((houseId) =>
-        homesList.find((home) => home.houseId === houseId)
+    HomeModel.fetchAllHomes().then(homesList => {
+      const favoritesWithDetails = favorites.map((_id) =>
+        homesList.find((home) => home._id === _id)
       );
       res.render("store/favoritesList", {
         favorites: favorites,
@@ -60,11 +59,11 @@ const getFavoritesList = (req, res, next) => {
 };
 
 const setFavorites = (req, res, next) => {
-  const houseId = req.body.houseId;
-  FavoritesModel.addToFavorites(houseId, (error) => {
+  const _id = req.body._id;
+  FavoritesModel.addToFavorites(_id, (error) => {
     if (error) {
       console.log("Error while marking favorite : ", error);
-      FavoritesModel.deleteFromFavorites(houseId, (error) => {
+      FavoritesModel.deleteFromFavorites(_id, (error) => {
         console.log("Favorite removed.");
       });
     }
@@ -73,7 +72,7 @@ const setFavorites = (req, res, next) => {
 };
 
 const getBookings = (req, res, next) => {
-  HomeModel.fetchAllHomes().then(([bookings]) => {
+  HomeModel.fetchAllHomes().then(bookings => {
     FavoritesModel.getFavorites((favorites) => {
       res.render("store/bookings", {
         favorites: favorites,

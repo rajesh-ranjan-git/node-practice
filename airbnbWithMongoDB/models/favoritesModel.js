@@ -11,21 +11,21 @@ class FavoritesModel {
     });
   }
     
-  static addToFavorites(houseId, callback) {
+  static addToFavorites(_id, callback) {
     FavoritesModel.getFavorites((favorites) => {
-        if (favorites.includes(houseId)) {
+        if (favorites.includes(_id)) {
           callback("Home is already marked favorite.");
         } else {
-          favorites.push(houseId);
+          favorites.push(_id);
           fs.writeFile(favoritesDataPath, JSON.stringify(favorites), callback);
         }
     });
   }
   
-  static deleteFromFavorites(houseId, callback) {
+  static deleteFromFavorites(_id, callback) {
     FavoritesModel.getFavorites((favorites) => {
-      if (favorites.includes(houseId)) {
-        favorites = favorites.filter(fav => fav !== houseId.toString())
+      if (favorites.includes(_id)) {
+        favorites = favorites.filter(fav => fav !== _id.toString())
         fs.writeFile(favoritesDataPath, JSON.stringify(favorites), callback);
       }
     });

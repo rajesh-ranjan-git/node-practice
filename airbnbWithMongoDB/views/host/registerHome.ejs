@@ -9,9 +9,9 @@
       </h1>
       <form class="flex flex-col items-center justify-center mx-2 my-4" action="/<%= editing ? 'editHome' : 'registerHome' %>" method="POST">
         <div class="flex items-center justify-between w-full">
-          <label class="hidden font-semibold" for="houseId">House Id : </label>
-          <input class="w-[70%] p-2 my-1 border rounded-md " type="hidden" id="houseId" name="houseId"
-            placeholder="Enter your House Id..." value="<%= editing ? home.houseId : '' %>" />
+          <label class="hidden font-semibold" for="_id">House Id : </label>
+          <input class="w-[70%] p-2 my-1 border rounded-md " type="hidden" id="_id" name="_id"
+            placeholder="Enter your House Id..." value="<%= editing ? home._id : '' %>" />
         </div>
         <div class="flex items-center justify-between w-full">
           <label class="font-semibold " for="houseName">House Name : </label>

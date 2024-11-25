@@ -45,11 +45,11 @@
             <% if(currentPage === "hostHomesList") {%>
             <a
               class="p-2 mr-1 text-sm font-semibold text-white bg-blue-500 border border-blue-500 rounded-md hover:bg-white hover:text-blue-500"
-              href="/editHome/<%= home.houseId %>?editing=true"
+              href="/editHome/<%= home._id %>?editing=true"
             >
               Edit
             </a>
-            <form method="POST" action="/deleteHome/<%= home.houseId %>">
+            <form method="POST" action="/deleteHome/<%= home._id %>">
               <button
                 class="p-2 text-sm font-semibold text-white bg-red-800 border border-red-800 rounded-md hover:bg-white hover:text-red-800"
                 type="submit"
@@ -63,7 +63,7 @@
             >
               Book
             </button>
-            <a href="/homeDetails/<%= home.houseId %>"
+            <a href="/homeDetails/<%= home._id %>"
               ><button
                 class="p-2 text-sm font-semibold text-white bg-blue-800 border border-blue-800 rounded-md hover:bg-white hover:text-blue-800"
               >

@@ -2,7 +2,7 @@ import FavoritesModel from "../models/favoritesModel.js";
 import HomeModel from "../models/homeModel.js";
 
 const getHostHomesList = (req, res, next) => {
-  HomeModel.fetchAllHomes().then(([hostHomesList]) => {
+  HomeModel.fetchAllHomes().then(hostHomesList => {
     res.render("host/hostHomesList", {
       hostHomesList: hostHomesList,
       pageTitle: "Homes List",
@@ -21,7 +21,7 @@ const getRegisterHome = (req, res, next) => {
 
 const registerHomeSuccess = (req, res, next) => {
   const {
-    houseId,
+    _id,
     houseName,
     housePricePerNight,
     houseLocation,
@@ -30,7 +30,7 @@ const registerHomeSuccess = (req, res, next) => {
     houseDescription
   } = req.body;
   const home = new HomeModel(
-    houseId,
+    _id,
     houseName,
     housePricePerNight,
     houseLocation,
@@ -38,16 +38,17 @@ const registerHomeSuccess = (req, res, next) => {
     housePhotoURL,
     houseDescription
   );
-  home.save();
+  home.save().then(() => {
+    console.log("Home registered successfully.")
+  });
   res.redirect("/hostHomesList");
 };
 
 const getEditHome = (req, res, next) => {
-  const houseId = req.params.houseId;
+  const _id = req.params._id;
   const editing = req.query.editing === "true";
 
-  HomeModel.findById(houseId).then(([homes]) => {
-    const home = homes[0];
+  HomeModel.findById(_id).then(home => {
     return res.render("host/registerHome", {
       home: home,
       editing: editing,
@@ -62,7 +63,7 @@ const getEditHome = (req, res, next) => {
 
 const editHomeSuccess = (req, res, next) => {
   const {
-    houseId,
+    _id,
     houseName,
     housePricePerNight,
     houseLocation,
@@ -71,7 +72,7 @@ const editHomeSuccess = (req, res, next) => {
     houseDescription
   } = req.body;
   const home = new HomeModel(
-    houseId,
+    _id,
     houseName,
     housePricePerNight,
     houseLocation,
@@ -79,18 +80,20 @@ const editHomeSuccess = (req, res, next) => {
     housePhotoURL,
     houseDescription
   );
-  home.save();
+  home.save().then(result => {
+    console.log("Home updated successfully : ", result);
+  });
   res.redirect("/hostHomesList");
 };
 
 const deleteHome = (req, res, next) => {
-  const houseId = req.params.houseId;
-  HomeModel.deleteHome(houseId).then(() => {
+  const _id = req.params._id;
+  HomeModel.deleteHome(_id).then(() => {
     res.redirect("/hostHomesList");
   }).catch(error => {
     console.log("Error while deleting home : ", error);
   });
-  // FavoritesModel.deleteFromFavorites(houseId, (error) => {
+  // FavoritesModel.deleteFromFavorites(_id, (error) => {
   //   console.log("Favorite removed.");
   // });
 }

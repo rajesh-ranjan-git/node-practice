@@ -1,1 +1,58 @@
-[{"houseId":"1","houseName":"Sayantanee's Home","housePricePerNight":"1299","houseLocation":"Gurgaon","houseRating":"4","housePhotoURL":"https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg"},{"houseId":"2","houseName":"Rajesh's Home","housePricePerNight":"990","houseLocation":"Noida","houseRating":"5","housePhotoURL":"https://media.istockphoto.com/id/1026205392/photo/beautiful-luxury-home-exterior-at-twilight.jpg?s=612x612&w=0&k=20&c=HOCqYY0noIVxnp5uQf1MJJEVpsH_d4WtVQ6-OwVoeDo="},{"houseId":"3","houseName":"Rahee's Home","housePricePerNight":"1099","houseLocation":"Gurgaon","houseRating":"4","housePhotoURL":"https://media.istockphoto.com/id/2155879397/photo/house-in-a-charming-neighborhood-with-stunning-sidewalk-landscaping.jpg?s=612x612&w=0&k=20&c=nQJOUoNb2RNev3QVNjIohcmxQABCTetCdgfnc8MV8sU="},{"houseId":"4","houseName":"Kripanidhan's Home","housePricePerNight":"1399","houseLocation":"Dhanbad","houseRating":"3","housePhotoURL":"https://i.ytimg.com/vi/OcVn3SExV6M/maxresdefault.jpg"},{"houseId":"5","houseName":"Ranjan's Home","housePricePerNight":"1362","houseLocation":"Ranchi","houseRating":"2.5","housePhotoURL":"https://img.staticmb.com/mbcontent/images/crop/uploads/2022/12/Most-Beautiful-House-in-the-World_0_1200.jpg"},{"houseId":"6","houseName":"Rajeev's Home","housePricePerNight":"1400","houseLocation":"Deoghar","houseRating":"5","housePhotoURL":"https://cdn11.bigcommerce.com/s-g95xg0y1db/images/stencil/1280x1280/g/modern%20house%20plan%20-%20carbondale__05776.original.jpg"},{"houseId":"7","houseName":"Mohanta's House","housePricePerNight":"1520","houseLocation":"Gurgaon","houseRating":"3.7","housePhotoURL":"https://www.moldexrealty.ph/wp-content/uploads/2018/09/ADRIANA-House-Model-5-10-18.jpg"}]
+[
+    {
+        "houseName": "Sayantanee's Home",
+        "housePricePerNight": "1299",
+        "houseLocation": "Gurgaon",
+        "houseRating": "4",
+        "houseDescription": "Welcome to Sayantanee's Home.",
+        "housePhotoURL": "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg"
+    },
+    {
+        "houseName": "Rajesh's Home",
+        "housePricePerNight": "990",
+        "houseLocation": "Noida",
+        "houseRating": "5",
+        "houseDescription": "Welcome to Rajesh's Home.",
+        "housePhotoURL": "https://media.istockphoto.com/id/1026205392/photo/beautiful-luxury-home-exterior-at-twilight.jpg?s=612x612&w=0&k=20&c=HOCqYY0noIVxnp5uQf1MJJEVpsH_d4WtVQ6-OwVoeDo="
+    },
+    {
+        "houseName": "Rahee's Home",
+        "housePricePerNight": "1099",
+        "houseLocation": "Gurgaon",
+        "houseRating": "4",
+        "houseDescription": "Welcome to Rahee's Home.",
+        "housePhotoURL": "https://media.istockphoto.com/id/2155879397/photo/house-in-a-charming-neighborhood-with-stunning-sidewalk-landscaping.jpg?s=612x612&w=0&k=20&c=nQJOUoNb2RNev3QVNjIohcmxQABCTetCdgfnc8MV8sU="
+    },
+    {
+        "houseName": "Kripanidhan's Home",
+        "housePricePerNight": "1399",
+        "houseLocation": "Dhanbad",
+        "houseRating": "3",
+        "houseDescription": "Welcome to Kripanidhan's Home.",
+        "housePhotoURL": "https://i.ytimg.com/vi/OcVn3SExV6M/maxresdefault.jpg"
+    },
+    {
+        "houseName": "Ranjan's Home",
+        "housePricePerNight": "1362",
+        "houseLocation": "Ranchi",
+        "houseRating": "2.5",
+        "houseDescription": "Welcome to Ranjan's Home.",
+        "housePhotoURL": "https://img.staticmb.com/mbcontent/images/crop/uploads/2022/12/Most-Beautiful-House-in-the-World_0_1200.jpg"
+    },
+    {
+        "houseName": "Rajeev's Home",
+        "housePricePerNight": "1400",
+        "houseLocation": "Deoghar",
+        "houseRating": "5",
+        "houseDescription": "Welcome to Rajeev's Home.",
+        "housePhotoURL": "https://cdn11.bigcommerce.com/s-g95xg0y1db/images/stencil/1280x1280/g/modern%20house%20plan%20-%20carbondale__05776.original.jpg"
+    },
+    {
+        "houseName": "Mohanta's House",
+        "housePricePerNight": "1520",
+        "houseLocation": "Gurgaon",
+        "houseRating": "3.7",
+        "houseDescription": "Welcome to Mohanta's House.",
+        "housePhotoURL": "https://www.moldexrealty.ph/wp-content/uploads/2018/09/ADRIANA-House-Model-5-10-18.jpg"
+    }
+]
